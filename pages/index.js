@@ -110,6 +110,7 @@ export default function PaginaInicial() {
               type='submit'
               label='Entrar'
               fullWidth
+              disabled={username.length < 3}
               buttonColors={{
                 contrastColor: appConfig.theme.colors.neutrals["000"],
                 mainColor: appConfig.theme.colors.primary[500],
@@ -142,7 +143,7 @@ export default function PaginaInicial() {
                 borderRadius: '50%',
                 marginBottom: '16px',
               }}
-              src={`https://github.com/${username}.png`}
+              src={`${username.length > 2 ? `https://github.com/${username}.png` : 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f4a4d442419075.57cc3f77e4089.png'}`}
             />
             <Text
               variant="body4"
@@ -153,7 +154,8 @@ export default function PaginaInicial() {
                 borderRadius: '1000px'
               }}
             >
-              {username}
+            {/*{username}*/}
+            {username.length > 2  ? username : null}
             </Text>
           </Box>
           {/* Photo Area */}
