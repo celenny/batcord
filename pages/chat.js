@@ -32,6 +32,11 @@ export default function ChatPage() {
     }
   }
 
+  function handleRemoverMensagem(mensagemId) {
+    const mensagens = listaDeMensagens.filter((valor) => valor.id !== mensagemId);
+    setListaDeMensagens(mensagens);
+  }
+
   return (
     <Box
       styleSheet={{
@@ -70,7 +75,7 @@ export default function ChatPage() {
           }}
         >
 
-          <MessageList mensagens={listaDeMensagens} />
+          <MessageList mensagens={listaDeMensagens} handleRemoverMensagem={handleRemoverMensagem}/>
           {/*{listaDeMensagens.map((mensagemAtual) => {
               return (
                 <li key={mensagemAtual.id}>
@@ -216,6 +221,27 @@ function MessageList(props) {
               >
                 {(new Date().toLocaleDateString())}
               </Text>
+              <Button
+                iconName='times'
+                onClick={() => props.handleRemoverMensagem(mensagem.id)}
+                style={{
+                  fontSize: '12px',
+                  height: '18px',
+                  width: '18px',
+                }}
+                styleSheet={{
+                  marginLeft: '-8px',
+                  marginTop: '-8px',
+                  backgroundColor: appConfig.theme.colors.neutrals[700],
+                  hover: {
+                    backgroundColor: appConfig.theme.colors.primary[700]
+                  },
+                  focus: {
+                    backgroundColor: appConfig.theme.colors.primary[700]
+                  }
+                }}
+              >
+              </Button>
             </Box>
             {mensagem.texto}
           </Text>
