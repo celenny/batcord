@@ -23,11 +23,13 @@ export default function ChatPage() {
       de: 'celenny',
       texto: novaMensagem,
     };
-    setListaDeMensagens([
+    if (novaMensagem) {
+      setListaDeMensagens([
         mensagem,
         ...listaDeMensagens,
-    ]);
-    setMensagem('');
+      ]);
+      setMensagem('');
+    }
   }
 
   return (
@@ -80,7 +82,8 @@ export default function ChatPage() {
             as="form"
             styleSheet={{
               display: 'flex',
-              alignItems: 'center',
+              flexDirection: 'row',
+              //alignItems: 'center',
             }}
           >
             <TextField
@@ -106,6 +109,31 @@ export default function ChatPage() {
                 backgroundColor: appConfig.theme.colors.neutrals[800],
                 marginRight: '12px',
                 color: appConfig.theme.colors.neutrals[200],
+              }}
+            />
+            <Button
+              iconName='paperPlane'
+              type='submit'
+              onClick={(event) => {
+                event.preventDefault();
+                handleNovaMensagem(mensagem)
+              }}
+              style={{
+                borderRadius: '0%',
+                height: 44,
+                borderRadius: '5px',
+                padding: '6px 8px',
+                fontSize: '16px',
+              }}
+              styleSheet={{
+                backgroundColor: appConfig.theme.colors.neutrals[800],
+                marginRight: '12px',
+                hover: {
+                  backgroundColor: appConfig.theme.colors.primary[700]
+                },
+                focus: {
+                  backgroundColor: appConfig.theme.colors.primary[700]
+                }
               }}
             />
           </Box>
@@ -134,12 +162,11 @@ function Header() {
 }
 
 function MessageList(props) {
-  console.log('MessageList', props);
   return (
     <Box
       tag="ul"
       styleSheet={{
-        overflow: 'scroll',
+        overflow: 'auto',
         display: 'flex',
         flexDirection: 'column-reverse',
         flex: 1,
@@ -150,7 +177,7 @@ function MessageList(props) {
       {props.mensagens.map((mensagem) => {
         return (
           <Text
-            key={mensagem.id} 
+            key={mensagem.id}
             tag="li"
             styleSheet={{
               borderRadius: '5px',
@@ -194,7 +221,6 @@ function MessageList(props) {
           </Text>
         );
       })}
-
     </Box>
   )
 }
