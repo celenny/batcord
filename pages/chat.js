@@ -40,10 +40,14 @@ export default function ChatPage() {
   return (
     <Box
       styleSheet={{
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
         backgroundColor: appConfig.theme.colors.primary[500],
         backgroundImage: `url(https://i.pinimg.com/originals/b8/39/cb/b839cb63e04ed9052a68aa2139f26385.jpg)`,
-        backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
+        backgroundRepeat: 'no-repeat', 
+        backgroundSize: 'cover', 
+        backgroundBlendMode: 'multiply',
         color: appConfig.theme.colors.neutrals['000']
       }}
     >
@@ -88,7 +92,6 @@ export default function ChatPage() {
             styleSheet={{
               display: 'flex',
               flexDirection: 'row',
-              //alignItems: 'center',
             }}
           >
             <TextField
@@ -195,6 +198,7 @@ function MessageList(props) {
           >
             <Box
               styleSheet={{
+                display: 'flex',
                 marginBottom: '8px',
               }}
             >
@@ -230,7 +234,7 @@ function MessageList(props) {
                   width: '18px',
                 }}
                 styleSheet={{
-                  marginLeft: '-8px',
+                  marginLeft: '1100px',
                   marginTop: '-8px',
                   backgroundColor: appConfig.theme.colors.neutrals[700],
                   hover: {
