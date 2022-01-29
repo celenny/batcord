@@ -1,6 +1,6 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
 import React from 'react';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import appConfig from '../config.json';
 
 function Title(props) {
@@ -32,8 +32,8 @@ function Title(props) {
 
 export default function PaginaInicial() {
   //const username = 'celenny';
-    const [username, setUsername] = React.useState('celenny');
-    const router = useRouter(); // roteamento
+  const [username, setUsername] = React.useState('');
+  const router = useRouter(); // roteamento
 
   return (
     <>
@@ -63,9 +63,9 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
-            onSubmit={ function (event) {
-                event.preventDefautl();
-                router.push('/chat');
+            onSubmit={(event) => {
+              event.preventDefautl();
+              router.push('/chat');
             }}
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
@@ -91,12 +91,13 @@ export default function PaginaInicial() {
             <TextField
               value={username}
               onChange={function handler(event) {
-                  // onde está o valor da variavel
-                  const val = event.target.value;
-                  // trocar o valor da variavel
-                  setUsername(val);
+                // onde está o valor da variavel
+                const val = event.target.value;
+                // trocar o valor da variavel
+                setUsername(val);
               }}
               fullWidth
+              placeholder="Digite seu usuário GitHub"
               textFieldColors={{
                 neutral: {
                   textColor: appConfig.theme.colors.neutrals[200],
@@ -154,8 +155,7 @@ export default function PaginaInicial() {
                 borderRadius: '1000px'
               }}
             >
-            {/*{username}*/}
-            {username.length > 2  ? username : null}
+              {username.length > 2 ? username : null}
             </Text>
           </Box>
           {/* Photo Area */}
