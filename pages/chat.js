@@ -1,22 +1,28 @@
 import { Box, Text, TextField, Image, Button } from '@skynexui/components';
 import React from 'react';
 import appConfig from '../config.json';
+import { createClient } from '@supabase/supabase-js'
+
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzYzNTE0NSwiZXhwIjoxOTU5MjExMTQ1fQ.KELSnwkNdkvtICREJGoALGJTlBLIezokAOExjEiC40s';
+const SUPABASE_URL = 'https://jdbckqvhdsdvvuwfuilk.supabase.co';
+
+// Create a single supabase client for interacting with your database
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function ChatPage() {
   const [mensagem, setMensagem] = React.useState('');
   const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
-  // User
-  /* 
-  - digita no campo textarea 
-  - aperta enter para enviar 
-  - tem que add o texto na listagem 
-  */
-  // dev
-  /* 
-  [x]campo criado 
-  [x] usar o onChange e usar o useState (if para caso seja enter para limpar a variavel) 
-  [x] lista de mensagens 
-  */
+
+  React.useEffect(() => {
+      supabaseClient
+          .from('mensagens')
+          .select('*')
+          .then(({ data }) => {
+             console.log('Dados da consulta:', data); 
+             setListaDeMensagens(data);
+          });
+  }, []);
+
   function handleNovaMensagem(novaMensagem) {
     const mensagem = {
       id: listaDeMensagens.length + 1,
@@ -210,7 +216,7 @@ function MessageList(props) {
                   display: 'inline-block',
                   marginRight: '8px',
                 }}
-                src={`https://github.com/celenny.png`}
+                src={`https://github.com/${mensagem.de}.png`}
               />
               <Text tag="strong">
                 {mensagem.de}

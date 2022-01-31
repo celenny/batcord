@@ -72,7 +72,7 @@ export default function PaginaInicial() {
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
             }}
           >
-            <Title tag="h2">Welcome to The Batfamily!</Title>
+            <Title tag="h2">Welcome to The Batcave</Title>
             <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
               {appConfig.name}
             </Text>
@@ -144,7 +144,7 @@ export default function PaginaInicial() {
                 borderRadius: '50%',
                 marginBottom: '16px',
               }}
-              src={`${username.length > 2 ? `https://github.com/${username}.png` : 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f4a4d442419075.57cc3f77e4089.png'}`}
+              src={`${username.length > 2 ? `https://github.com/${username}.png` : 'https://avatarfiles.alphacoders.com/196/196095.jpg'}`}
             />
             <Text
               variant="body4"
