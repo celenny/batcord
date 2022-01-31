@@ -17,6 +17,7 @@ export default function ChatPage() {
       supabaseClient
           .from('mensagens')
           .select('*')
+          .order('id', { ascending: false})
           .then(({ data }) => {
              console.log('Dados da consulta:', data); 
              setListaDeMensagens(data);
@@ -25,17 +26,33 @@ export default function ChatPage() {
 
   function handleNovaMensagem(novaMensagem) {
     const mensagem = {
-      id: listaDeMensagens.length + 1,
+      //id: listaDeMensagens.length + 1,
       de: 'celenny',
       texto: novaMensagem,
     };
-    if (novaMensagem) {
+
+    supabaseClient
+        .from('mensagens')
+        .insert([
+          //tem que ser um objetoc com os mesmos campos do supabase
+          mensagem
+        ])
+        .then(( { data }) => {
+            setListaDeMensagens([
+              data[0],
+              ...listaDeMensagens,
+            ]);
+        });
+
+    setMensagem('');
+
+    /*if (novaMensagem) {
       setListaDeMensagens([
         mensagem,
         ...listaDeMensagens,
       ]);
       setMensagem('');
-    }
+    }*/
   }
 
   function handleRemoverMensagem(mensagemId) {
@@ -240,8 +257,8 @@ function MessageList(props) {
                   width: '18px',
                 }}
                 styleSheet={{
-                  marginLeft: '1100px',
-                  marginTop: '-8px',
+                  marginLeft: '10px',
+                  marginTop: '-6px',
                   backgroundColor: appConfig.theme.colors.neutrals[700],
                   hover: {
                     backgroundColor: appConfig.theme.colors.primary[700]
