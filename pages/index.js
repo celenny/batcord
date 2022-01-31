@@ -3,37 +3,39 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import appConfig from '../config.json';
 
-function Title(props) {
+function Titulo(props) {
   const Tag = props.tag || 'h1';
   return (
     <>
       <Tag>{props.children}</Tag>
       <style jsx>{`
             ${Tag} {
-              color: ${appConfig.theme.colors.neutrals['000']};
-              font-size: 24px;
-              font-weight: 600;
+                color: ${appConfig.theme.colors.neutrals['000']};
+                font-size: 24px;
+                font-weight: 600;
             }
-          `}</style>
+            `}</style>
     </>
   );
 }
 
-{/*function HomePage() {
-    return (
-      <div>
-          <GlobalStyle/>
-          <Title tag="h1">Welcome to Batcord!</Title>
-          <h2>Discord - The Batman</h2>
-      </div>
-    );
-}*/}
-//export default HomePage
+// Componente React
+// function HomePage() {
+//     // JSX
+//     return (
+//         <div>
+//             <GlobalStyle />
+//             <Titulo tag="h2">Boas vindas de volta!</Titulo>
+//             <h2>Discord - Alura Matrix</h2>
+//         </div>
+//     )
+// }
+// export default HomePage
 
 export default function PaginaInicial() {
-  //const username = 'celenny';
+  // const username = 'celenny';
   const [username, setUsername] = React.useState('');
-  const router = useRouter(); // roteamento
+  const roteamento = useRouter();
 
   return (
     <>
@@ -63,38 +65,31 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
-            onSubmit={(event) => {
-              event.preventDefautl();
-              router.push('/chat');
+            onSubmit={function (infosDoEvento) {
+              infosDoEvento.preventDefault();
+              console.log('Alguém submeteu o form');
+              roteamento.push('/chat');
+              // window.location.href = '/chat';
             }}
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
             }}
           >
-            <Title tag="h2">Welcome to The Batfamily</Title>
+            <Titulo tag="h2">Welcome to The Batfamily</Titulo>
             <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
               {appConfig.name}
             </Text>
 
-            {/*<input 
-                type="text" 
-                value={username}
-                onChange={function handler(event) {
-                    // onde está a variavel
-                    const valor = event.target.value;
-                    // trocar o valor da variavel
-                    setUsername(valor);
-                }}
-            />*/}
-
             <TextField
               value={username}
-              onChange={function handler(event) {
-                // onde está o valor da variavel
-                const val = event.target.value;
+              onChange={function (event) {
+                console.log('usuario digitou', event.target.value);
+                // onde ta o valor da variavel?
+                const valor = event.target.value;
                 // trocar o valor da variavel
-                setUsername(val);
+                // através do React e avise quem precisa
+                setUsername(valor);
               }}
               fullWidth
               placeholder="Digite seu usuário GitHub"
@@ -110,8 +105,8 @@ export default function PaginaInicial() {
             <Button
               type='submit'
               label='Entrar'
-              fullWidth
               disabled={username.length < 3}
+              fullWidth
               buttonColors={{
                 contrastColor: appConfig.theme.colors.neutrals["000"],
                 mainColor: appConfig.theme.colors.primary[500],
@@ -144,6 +139,7 @@ export default function PaginaInicial() {
                 borderRadius: '50%',
                 marginBottom: '16px',
               }}
+              //src={`https://github.com/${username}.png`}
               src={`${username.length > 2 ? `https://github.com/${username}.png` : 'https://avatarfiles.alphacoders.com/196/196095.jpg'}`}
             />
             <Text
