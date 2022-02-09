@@ -12,21 +12,29 @@ export function ButtonSendSticker(props) {
       }}
     >
       <Button
+        style={{
+          borderRadius: '0%',
+          height: 44,
+          borderRadius: '5px',
+          padding: '6px 8px',
+          fontSize: '16px',
+        }}
         styleSheet={{
-          borderRadius: '80%',
+          borderRadius: '0%',
           padding: '0 1px 0 0',
-          minWidth: '50px',
-          minHeight: '50px',
-          fontSize: '20px',
-          marginBottom: '8px',
-          lineHeight: '0',
+          minWidth: '45px',
+          fontSize: '21px',
+          marginRight: '12px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: appConfig.theme.colors.neutrals[300],
-          filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
+          backgroundColor: appConfig.theme.colors.neutrals[800],
+          filter: isOpen ? 'none' : 'none',
           hover: {
-            filter: 'grayscale(0)',
+            backgroundColor: appConfig.theme.colors.primary[700]
+          },
+          focus: {
+            backgroundColor: appConfig.theme.colors.primary[700]
           }
         }}
         label="🦇"
