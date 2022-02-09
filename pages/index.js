@@ -68,7 +68,7 @@ export default function PaginaInicial() {
             onSubmit={function (infosDoEvento) {
               infosDoEvento.preventDefault();
               console.log('Alguém submeteu o form');
-              roteamento.push('/chat');
+              roteamento.push(`/chat?username=${username}`);
               // window.location.href = '/chat';
             }}
             styleSheet={{
@@ -151,7 +151,7 @@ export default function PaginaInicial() {
                 borderRadius: '1000px'
               }}
             >
-              {username.length > 2 ? username : null}
+              {username.length > 2 ? username : 'Batman'}
             </Text>
           </Box>
           {/* Photo Area */}
