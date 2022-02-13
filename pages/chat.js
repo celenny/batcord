@@ -296,7 +296,7 @@ function MessageList(props) {
             {mensagem.texto.startsWith(':sticker:')
               ? (<Image src={mensagem.texto.replace(':sticker:', '')}
                 styleSheet={{
-                  maxWidth: '25vh'
+                  maxWidth: '35vh'
                 }}
               />) : (mensagem.texto)
             }
