@@ -5,6 +5,8 @@
 
 ## Tela inicial
 ![tela-inicial-batcord](https://user-images.githubusercontent.com/70456452/153756324-02c5f91e-2775-49b4-972d-add666ac57dd.jpg)
+## Tela com usuario GitHub
+![usuario-batcord](https://user-images.githubusercontent.com/70456452/157046742-56b46313-d1b1-40d1-9f4f-d03792fdb570.jpg)
 ## Tela do chat
 ![chat-batcord](https://user-images.githubusercontent.com/70456452/153756307-fcc4fded-699e-4cd3-ad54-4b2664b755e8.jpg)
 
