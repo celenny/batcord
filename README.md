@@ -1,5 +1,5 @@
 # batcord
-🦇 Projeto desenvolvido durante a Imersão React da @alura @omariosouto @peas
+🦇 O Batcord é um clone personalizado do Discord desenvolvido durante a Imersão React da @alura @omariosouto @peas
 
 <a href="https://batcord.vercel.app/">Clique aqui para utilizá-lo</a> 
 
